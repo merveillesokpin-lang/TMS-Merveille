@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chauffeurs', function (Blueprint $table) {
+        Schema::create('piece_rechange', function (Blueprint $table) {
             $table->id();
+            $table->string('NomPiece');
+            $table->string('ReferencePiece');
+            $table->string('LibellePiece');
+            $table->string('PrixPiece');
+            $table->decimal('PrixVente', 10, 2)->nullable();
+            $table->string('neuf/use');
+            $table->integer('QuantiteStock')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chauffeurs');
+        Schema::dropIfExists('piece_rechange');
     }
 };

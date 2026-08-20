@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('maintenaces', function (Blueprint $table) {
+        Schema::create('chronogramme_chauffeur', function (Blueprint $table) {
             $table->id();
+            $table->date('Date_Debut');
+            $table->date('Date_Fin');
+            $table->string('Type_horaire');
+            $table->string('PrenomChaufeur');
+            $table->foreignId('personnel_id')->constrained('personnel')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maintenaces');
+        Schema::dropIfExists('chronogramme_chauffeur');
     }
 };

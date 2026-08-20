@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('contrat_travail', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('role')->default('gerant'); // admin, comptable, gerant, chef_garage
-            $table->rememberToken();
+            $table->string('TypeContrat');
+            $table->date('DateDebut');
+            $table->date('DateFin');
+            $table->foreignId('Personnel_Id')->constrained('personnel');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('contrat_travail');
     }
 };

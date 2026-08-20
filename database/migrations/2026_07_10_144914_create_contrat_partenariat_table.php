@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('contrat_partenariat', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('role')->default('gerant'); // admin, comptable, gerant, chef_garage
-            $table->rememberToken();
+            $table->string('NomContrat');
+            $table->foreignId('partenaire_id')->constrained('partenaire')->onDelete('cascade');
+            $table->date('DateContrat');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('contrat_partenariat');
     }
 };

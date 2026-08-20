@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fournisseurs', function (Blueprint $table) {
+        Schema::create('intervention', function (Blueprint $table) {
             $table->id();
+            $table->string('TypeIntervention');
+            $table->date('DateIntervention');
+            $table->decimal('FraisIntervention', 10, 2);
+            $table->decimal('heures_debut', 5, 2)->nullable();
+            $table->decimal('heures_fin', 5, 2)->nullable();
+            
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fournisseurs');
+        Schema::dropIfExists('intervention');
     }
 };

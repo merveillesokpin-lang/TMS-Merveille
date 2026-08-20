@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('indicent', function (Blueprint $table) {
             $table->id();
+            $table->string('TypeIndicent');
+            $table->date('DateIndicent');
+            $table->foreignId('vehicule_id')->constrained('vehicules')->onDelete('cascade');
+        
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('indicent');
     }
 };

@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('voyages', function (Blueprint $table) {
+        Schema::create('facture', function (Blueprint $table) {
             $table->id();
+            $table->string('NumeroFacture');
+            $table->date('DateFacture');
+            $table->decimal('MontantFacture', 10, 2)->nullable();
+            $table->unsignedBigInteger('partenaire_id')->nullable();
+            $table->unsignedBigInteger('reglement_id')->nullable();
+            $table->unsignedBigInteger('reservation_id')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voyages');
+        Schema::dropIfExists('facture');
     }
 };

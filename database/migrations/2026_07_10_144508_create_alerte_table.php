@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('camions', function (Blueprint $table) {
+        Schema::create('alerte', function (Blueprint $table) {
             $table->id();
+            
+            $table->string('TypeAlerte');
+            $table->foreignId('vehicule_id')->constrained('vehicules')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camions');
+        Schema::dropIfExists('alerte');
     }
 };
