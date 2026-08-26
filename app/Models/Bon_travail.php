@@ -18,19 +18,19 @@ class Bon_travail extends Model
     }
     public function vehicule()
     {
-        return $this->belongsTo(Vehicule::class);
+        return $this->belongsTo(Vehicule::class, 'VehiculeId');
     }
     public function personnel()
     {
-        return $this->belongsTo(Personnel::class);
+        return $this->belongsTo(Personnel::class, 'PersonnelId');
     }
     public function categorieVehicule()
     {
-        return $this->belongsTo(Categorie_Vehicule::class);
+        return $this->belongsTo(Categorie_Vehicule::class, 'CategorieVehiculeId');
     }
     public function pieceRechange()
     {
-        return $this->belongsTo(Piece_Rechange::class);
+        return $this->belongsTo(Piece_Rechange::class, 'PieceRechangeId');
     }    
 
 }

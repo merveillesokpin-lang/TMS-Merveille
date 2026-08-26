@@ -13,7 +13,7 @@ class BonTravailController extends Controller
     public function index(): JsonResponse
     {
         try {
-            $items = Bon_travail::paginate(15);
+            $items = Bon_travail::with(['vehicule', 'personnel', 'pieceRechange', 'categorieVehicule'])->paginate(15);
             return response()->json([
                 'success' => true,
                 'message' => 'Bons de travail récupérés avec succès',
